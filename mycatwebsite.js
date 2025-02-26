@@ -1,3 +1,4 @@
+/* if this was on a backend server we would include this api in a .env file but since its just a website page, im going to leave it */
 const apiKey = 'live_jdze3HODv79AFP54FLpMz9HIhwS2KVg1yldMnRJ97xgXax1Bq4RzFbi6iB2xtQFCY';
 const breedId = 'bsho';
 
