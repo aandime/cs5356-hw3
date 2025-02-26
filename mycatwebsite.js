@@ -33,3 +33,22 @@ async function fetchCatImage() {
 }
 
 window.onload = fetchCatImage;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll("img");
+
+    images.forEach((img) => {
+        img.addEventListener("mouseenter", () => {
+            img.style.transform = "scale(1.1)";
+            img.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+            img.style.boxShadow = "5px 5px 15px rgba(0,0,0,0.3)";
+        });
+
+        img.addEventListener("mouseleave", () => {
+            img.style.transform = "scale(1)";
+            img.style.boxShadow = "none";
+        });
+    });
+});
+
+  
