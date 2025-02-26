@@ -17,7 +17,7 @@ async function fetchCatImage() {
     const data = await response.json();
 
     if (data.length === 0) {
-      throw new Error('No British Shorthair images found.');
+      throw new Error('no British Shorthair images found.');
     }
 
     const imgElement = document.getElementById('catImage');
@@ -32,23 +32,11 @@ async function fetchCatImage() {
   }
 }
 
-window.onload = fetchCatImage;
-
-document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll("img");
-
-    images.forEach((img) => {
-        img.addEventListener("mouseenter", () => {
-            img.style.transform = "scale(1.1)";
-            img.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-            img.style.boxShadow = "5px 5px 15px rgba(0,0,0,0.3)";
-        });
-
-        img.addEventListener("mouseleave", () => {
-            img.style.transform = "scale(1)";
-            img.style.boxShadow = "none";
-        });
-    });
+document.addEventListener("click", () => {
+    /* change background color on click, choosing colors that are readable*/
+    const colors = ["#f8f9fa", "#e3f2fd", "#f1f8e9", "#fff3e0", "#fce4ec", "#ede7f6"];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = randomColor;
 });
 
-  
+window.onload = fetchCatImage;

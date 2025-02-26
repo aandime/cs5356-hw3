@@ -13,6 +13,22 @@ header {
     backdrop-filter: blur(10px);
 }
 
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    background: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
 .profile {
     display: flex;
     align-items: center;
@@ -37,7 +53,7 @@ header {
     max-width: 600px;
     line-height: 1.8;
     font-size: 16px;
-    color: #333;
+    color: black;
 }
 
 @media (max-width: 768px) {
@@ -61,12 +77,12 @@ header {
     display: inline-block;
     margin-top: 10px;
     text-decoration: none;
-    color: #0073e6;
+    color: blue;
     font-weight: bold;
 }
 
 .photo-link:hover {
-    color: #005bb5;
+    color: lightblue;
     text-decoration: underline;
 }
 
@@ -78,7 +94,18 @@ header {
 .api-section {
     text-align: center;
     padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.api-section img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
+
 
 footer {
     text-align: center;
