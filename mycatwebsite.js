@@ -1,15 +1,34 @@
-fetch("https://api.thecatapi.com/v1/breeds")
-    .then(response => response.json())
-    .then(data => {
-        const britishShorthair = data.find(breed => breed.name === "British Shorthair");
-        
-        if (britishShorthair) {
-            document.getElementById("cat-fact").innerText = britishShorthair.description;
-        } else {
-            document.getElementById("cat-fact").innerText = "No facts available for British Shorthairs.";
-        }
-    })
-    .catch(error => {
-        console.log("Error fetching cat fact:", error);
-        document.getElementById("cat-fact").innerText = "Error loading cat fact.";
+const apiKey = 'live_jdze3HODv79AFP54FLpMz9HIhwS2KVg1yldMnRJ97xgXax1Bq4RzFbi6iB2xtQFCY';
+const breedId = 'bsho';
+
+async function fetchCatImage() {
+  try {
+    const response = await fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&limit=1`, {
+      headers: {
+        'x-api-key': apiKey
+      }
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (data.length === 0) {
+      throw new Error('No British Shorthair images found.');
+    }
+
+    const imgElement = document.getElementById('catImage');
+    if (imgElement) {
+      imgElement.src = data[0].url;
+      imgElement.alt = 'A cute British Shorthair cat';
+    } else {
+      console.error("Image element with ID 'catImage' not found.");
+    }
+  } catch (error) {
+    console.error('Error fetching cat image:', error);
+  }
+}
+
+window.onload = fetchCatImage;
